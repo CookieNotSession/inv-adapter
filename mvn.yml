@@ -1,0 +1,22 @@
+---
+platform: linux
+
+image_resource:
+  type: docker-image
+  source: {repository: maven}
+
+inputs:
+- name: resource-tutorial
+
+outputs:
+- name: target-web
+
+run:
+  path: sh
+  args:
+  - -exc
+  - |
+    cd ./resource-tutorial
+    mvn clean package
+    ls -alR
+    cp ./target/twewcweightloss2018-1.0-SNAPSHOT.jar ../target-web/twewcweightloss2018-1.0-SNAPSHOT.jar

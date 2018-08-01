@@ -1,0 +1,32 @@
+---
+resources:
+- name: resource-tutorial
+  type: git
+  check_every: 20s
+  source:
+    uri: https://github.com/CookieNotSession/twewcweightloss2018.git
+    branch: master
+- name: cloudfoundry
+  type: cf
+  source:
+    api: https://api.run.pivotal.io
+    username: cookie040667@gmail.com
+    password: Bing1103@
+    organization: cookie040667-org
+    space: development
+    skip_cert_check: true
+
+
+jobs:
+- name: maven install
+  public: true
+  plan:
+  - get: resource-tutorial
+    trigger: true
+  - task: maven-install
+    file: resource-tutorial/mvn.yml
+  - put: cloudfoundry
+    params:
+      manifest: resource-tutorial/manifest.yml
+      buildpack: java_buildpack
+      path: target-web/twewcweightloss2018-1.0-SNAPSHOT.jar
