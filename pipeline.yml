@@ -4,7 +4,7 @@ resources:
   type: git
   check_every: 20s
   source:
-    uri: https://github.com/CookieNotSession/twewcweightloss2018.git
+    uri: https://github.com/CookieNotSession/inv-adapter.git
     branch: master
 - name: cloudfoundry
   type: cf
