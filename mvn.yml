@@ -6,7 +6,7 @@ image_resource:
   source: {repository: maven}
 
 inputs:
-- name: resource-tutorial
+- name: github-repo
 
 outputs:
 - name: target-web
@@ -16,7 +16,7 @@ run:
   args:
   - -exc
   - |
-    cd ./resource-tutorial
+    cd ./github-repo
     mvn clean package
     ls -alR
-    cp ./target/twewcweightloss2018-1.0-SNAPSHOT.jar ../target-web/twewcweightloss2018-1.0-SNAPSHOT.jar
+    cp ./target/inv-adapter-0.0.1-SNAPSHOT.jar ../target-web/inv-adapter-0.0.1-SNAPSHOT.jar

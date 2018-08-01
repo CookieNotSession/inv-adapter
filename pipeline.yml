@@ -1,6 +1,6 @@
 ---
 resources:
-- name: resource-tutorial
+- name: github-repo
   type: git
   check_every: 20s
   source:
@@ -18,15 +18,15 @@ resources:
 
 
 jobs:
-- name: maven install
+- name: Build
   public: true
   plan:
-  - get: resource-tutorial
+  - get: github-repo
     trigger: true
   - task: maven-install
-    file: resource-tutorial/mvn.yml
+    file: github-repo/mvn.yml
   - put: cloudfoundry
     params:
-      manifest: resource-tutorial/manifest.yml
+      manifest: github-repo/manifest.yml
       buildpack: java_buildpack
-      path: target-web/twewcweightloss2018-1.0-SNAPSHOT.jar
+      path: target-web/inv-adapter-0.0.1-SNAPSHOT.jar
